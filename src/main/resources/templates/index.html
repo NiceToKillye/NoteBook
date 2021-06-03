@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>To do List</title>
+    <link rel="stylesheet" th:href="@{/style.css}"></link>
+</head>
+<body>
+<h3>Your to do List</h3>
+    <div th:each="note : ${notes}">
+        <dt class="noteHeadline">
+            <span th:text="${note.heading}">Heading</span>
+        </dt>
+        <dd class="noteDescription">
+            <span th:if="${note.note}" th:text="${note.note}">Note</span>
+        </dd>
+        <hr/>
+    </div>
+    <div th:if="${#lists.isEmpty(notes)}">
+        <p>You have no notes in your to do list</p>
+    </div>
+</body>
+
+</html>
