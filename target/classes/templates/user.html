@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Note Book</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/user.js"></script>
+</head>
+<body>
+<h3>Your notes</h3>
+<table>
+
+    <tr align="center" th:if="${#lists.isEmpty(notes)}">
+        <th>You have no notes in your Note book</th>
+    </tr>
+
+    <tbody th:each="note : ${notes}">
+    <tr><td class="noteHead" th:text="${note.label}">Note Name</td></tr>
+    <tr><td class="note" th:text="${note.note}">Note note</td></tr>
+    </tbody>
+
+</table>
+
+<form class="noteForm" id="noteForm" method="POST">
+    <label>
+        <input class="inputField" type="text" id="label" name="label" align="center" placeholder="Label"/>
+    </label>
+    <label>
+        <textarea class="noteText" type="text" id="note" name="note" placeholder="Note text"></textarea>
+    </label>
+    <button class="submit" id="save-note" align="center">Save note</button>
+</form>
+
+<form class="logoutForm" th:action="@{/logout}" method="GET">
+    <button class="logout" align="center">Log out</button>
+</form>
+
+</body>
+
+</html>

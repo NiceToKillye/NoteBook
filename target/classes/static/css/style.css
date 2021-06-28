@@ -1,0 +1,122 @@
+
+body {
+    background-color: #9914cb;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+h3 {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 22pt;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+table {
+    background-color: #FFFFFF;
+    width: 800px;
+    margin: 7em auto;
+    border-radius: 1.5em;
+    border-spacing: 10px;
+    box-shadow: 0 11px 35px 20px rgba(0, 0, 0, 0.14);
+
+}
+
+td {
+    padding: 5px;
+}
+
+.noteHead {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight:bold;
+}
+
+.note {
+    border-bottom: 2px solid black;
+}
+
+.main {
+    background-color: #FFFFFF;
+    width: 600px;
+    height: 600px;
+    margin: 7em auto;
+    border-radius: 1.5em;
+    box-shadow: 0 11px 35px 2px rgba(0, 0, 0, 0.14);
+}
+
+.noteForm {
+    background-color: #FFFFFF;
+    width: 800px;
+    height: 400px;
+    margin: 7em auto;
+    border-radius: 1.5em;
+    box-shadow: 0 11px 35px 2px rgba(0, 0, 0, 0.14);
+    padding-top: 40px;
+}
+
+.inputField {
+    width: 90%;
+    color: rgb(38, 50, 56);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background: rgba(136, 126, 126, 0.04);
+    padding: 10px 20px;
+    border-radius: 20px;
+    outline: none;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, 0.02);
+    margin-left: 46px;
+    text-align: center;
+    margin-bottom: 27px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.noteText {
+    width: 90%;
+    height: 50%;
+    resize: none;
+
+    color: rgb(38, 50, 56);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background: rgba(136, 126, 126, 0.04);
+    padding: 10px 20px;
+    border-radius: 20px;
+    outline: none;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, 0.02);
+    margin-left: 46px;
+    text-align: center;
+    margin-bottom: 27px;
+
+    font-family: 'Ubuntu', sans-serif;
+
+}
+
+.submit {
+    cursor: pointer;
+    border-radius: 5em;
+    color: #fff;
+    background: linear-gradient(to right, #9C27B0, #E040FB);
+    border: 0;
+    padding: 10px 40px;
+    font-family: 'Ubuntu', sans-serif;
+    margin-left: 42%;
+    font-size: 13px;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+}
+
+.logout {
+    cursor: pointer;
+    border-radius: 5em;
+    color: black;
+    background: #FFFFFF;
+    border: 0;
+    padding: 10px 45px;
+    font-family: 'Ubuntu', sans-serif;
+    margin-left: 45%;
+    margin-bottom: 5%;
+    font-size: 18px;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+}

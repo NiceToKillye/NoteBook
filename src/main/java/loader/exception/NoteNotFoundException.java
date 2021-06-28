@@ -1,7 +1,7 @@
 package loader.exception;
 
 public class NoteNotFoundException extends Exception{
-    public NoteNotFoundException(Long id){
-        super(String.valueOf(id));
+    public NoteNotFoundException(long id, long userId){
+        super("Note with id " + id + " for user #" + userId + " was not found");
     }
 }

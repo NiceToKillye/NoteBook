@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Recover password</title>
+    <link rel="stylesheet" th:href="@{/css/recoveryStyle.css}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+</head>
+
+<body>
+<div class="main">
+    <p class="sign" align="center">Recover password</p>
+    <form th:action="@{/recovery}" method="POST">
+        <label>
+            <input class="inputField" type="text" id="email" name="email" align="center" placeholder="Email"/>
+        </label>
+        <button type="submit" class="submit" align="center">Recover</button>
+        <p class="login" align="center"><a th:href="login">Back</a></p>
+    </form>
+</div>
+</body>
+</html>

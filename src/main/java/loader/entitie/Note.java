@@ -16,17 +16,20 @@ public class Note {
             strategy = GenerationType.SEQUENCE,
             generator = "note_sequence"
     )
-    private Long id;
+    private long id;
+
     @Column(
-            name = "user_id",
+            name = "username",
             nullable = false
     )
-    private Long userId;
+    private String username;
+
     @Column(
             name = "label",
             nullable = false
     )
     private String label;
+
     @Column(
             name = "note",
             nullable = false
@@ -36,26 +39,31 @@ public class Note {
     public Note() {
     }
 
-    public Note(Long userId, String label, String note) {
-        this.userId = userId;
+    public Note(String username, String label, String note) {
+        this.username = username;
         this.label = label;
         this.note = note;
     }
 
-    public Long getId() {
+    public Note(String label, String note) {
+        this.label = label;
+        this.note = note;
+    }
+
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public Long getUserId() {
-        return userId;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getLabel() {
@@ -78,7 +86,7 @@ public class Note {
     public String toString() {
         return "Note{" +
                 "id=" + id +
-                ", userId=" + userId +
+                ", username=" + username +
                 ", label='" + label + '\'' +
                 ", note='" + note + '\'' +
                 '}';

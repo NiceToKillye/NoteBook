@@ -1,6 +1,13 @@
 package loader.entitie;
 
+import loader.security.UserRole;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.Collections;
 
 @Entity(name = "User")
 @Table(
@@ -11,7 +18,7 @@ import javax.persistence.*;
                         columnNames = {"login", "email"})
         }
 )
-public class User {
+public class User implements UserDetails {
 
     @Id
     @SequenceGenerator(
@@ -23,7 +30,7 @@ public class User {
             strategy = GenerationType.SEQUENCE,
             generator = "user_sequence"
     )
-    private Long id;
+    private long id;
     @Column(
             name = "login",
             nullable = false
@@ -40,21 +47,29 @@ public class User {
     )
     private String email;
 
-    public User(String login, String password, String email) {
+    @Enumerated(EnumType.STRING)
+    @Column(
+            name = "role",
+            nullable = false
+    )
+    private UserRole userRole;
+
+    public User(String login, String password, String email, UserRole userRole) {
         this.login = login;
         this.password = password;
         this.email = email;
+        this.userRole = userRole;
     }
 
     public User() {
 
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -66,8 +81,39 @@ public class User {
         this.login = login;
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(UserRole.USER.name());
+        return Collections.singleton(authority);
+    }
+
     public String getPassword() {
         return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return login;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 
     public void setPassword(String password) {
@@ -80,6 +126,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public UserRole getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(UserRole userRole) {
+        this.userRole = userRole;
     }
 
     @Override

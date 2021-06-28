@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sign in</title>
+    <link rel="stylesheet" th:href="@{/css/loginPageStyle.css}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+</head>
+
+<body>
+<div class="main">
+    <p class="sign" align="center">Sign in</p>
+    <div align="center" th:if="${param.error}" class="alert-error">
+        Invalid username or password.
+    </div>
+    <form th:action="@{/login}" method="POST">
+        <label>
+            <input class="inputField" type="text" id="username" name="username" align="center" placeholder="Username"/>
+        </label>
+        <label>
+            <input class="inputField" type="password" id="password" name="password" align="center" placeholder="Password"/>
+        </label>
+        <button type="submit" class="submit" align="center">Sign in</button>
+        <p class="forgot" align="center"><a th:href="recovery">Forgot Password?</a></p>
+        <p class="register" align="center"><a th:href="registration">Register</a></p>
+    </form>
+</div>
+</body>
+</html>

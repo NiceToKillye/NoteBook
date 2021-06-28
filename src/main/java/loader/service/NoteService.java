@@ -13,29 +13,30 @@ public class NoteService {
         this.noteRepository = noteRepository;
     }
 
-    public Iterable<Note> getAll(){ return noteRepository.findAll(); }
-    public void deleteAll(){ noteRepository.deleteAll(); }
-
-    public Note getNote(Long id) throws NoteNotFoundException{
-        return noteRepository.findById(id)
-                .orElseThrow(() -> new NoteNotFoundException(id));
+    public Iterable<Note> getAllNotes(String username){
+        return noteRepository.findAllByUsername(username);
     }
+
+    public void deleteAllNotes(String username){
+        noteRepository.deleteAllByUsername(username);
+    }
+
+/*    public void deleteNote(long userId, long id) throws NoteNotFoundException{
+        if(!noteRepository.existsByIdAndUserId(id, userId)){
+            throw new NoteNotFoundException(userId, id);
+        }
+        else {
+            noteRepository.deleteById(id);
+        }
+    }*/
 
     public String addNote(Note note){
         return noteRepository.save(note).toString();
     }
 
-    public void deleteNote(Long id) throws NoteNotFoundException{
-        if(!noteRepository.existsById(id)){
-            throw new NoteNotFoundException(id);
-        }
-        else {
-            noteRepository.deleteById(id);
-        }
-    }
-
-    public void editNote(Long id, String label, String noteString) throws NoteNotFoundException {
-        Note note = noteRepository.findById(id).orElseThrow(() -> new NoteNotFoundException(id));
+/*    public void editNote(long userId, long id, String label, String noteString) throws NoteNotFoundException {
+        Note note = noteRepository.findNoteByIdAndUserId(id, userId)
+                .orElseThrow(() -> new NoteNotFoundException(userId, id));
 
         if(label != null && !label.equals(note.getLabel())){
             note.setLabel(label);
@@ -44,5 +45,5 @@ public class NoteService {
             note.setNote(noteString);
         }
         noteRepository.save(note);
-    }
+    }*/
 }
