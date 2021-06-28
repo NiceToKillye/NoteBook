@@ -1,6 +1,7 @@
 package loader.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -19,7 +20,8 @@ public class TemplateController {
     }
 
     @GetMapping("registration")
-    public String loadRegistration(){
+    public String loadRegistration(Model model){
+        model.addAttribute("show", false);
         return "registration";
     }
 }

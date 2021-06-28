@@ -1,30 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
     <title>Registration</title>
     <link rel="stylesheet" th:href="@{/css/registrationStyle.css}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
 </head>
+
 <body>
 <div class="main">
-  <p class="sign" align="center">Registration</p>
-  <form th:action="@{/registration}" method="POST">
-    <div th:if="${param.error}" class="alert alert-error">
+    <p class="sign" align="center">Registration</p>
+    <div align="center" th:if="${show}" th:text="${errorMessage}" class="alert alert-error">
       Something went wrong.
     </div>
-    <label>
-      <input class="inputField" type="text" id="login" name="login" align="center" placeholder="Username"/>
-    </label>
-    <label>
-      <input class="inputField" type="password" id="password" name="password" align="center" placeholder="Password"/>
-    </label>
-    <label>
-      <input class="inputField" type="text" id="email" name="email" align="center" placeholder="Email"/>
-    </label>
-    <button type="submit" class="submit" align="center">Register</button>
-    <p class="forgot" align="center"><a th:href="login">Already have Account?</a></p>
-  </form>
+    <form th:action="@{/registration}" method="POST">
+        <label>
+          <input class="inputField" type="text" id="login" name="login" align="center" placeholder="Username"/>
+        </label>
+        <label>
+          <input class="inputField" type="password" id="password" name="password" align="center" placeholder="Password"/>
+        </label>
+        <label>
+          <input class="inputField" type="text" id="email" name="email" align="center" placeholder="Email"/>
+        </label>
+        <button type="submit" class="submit" align="center">Register</button>
+        <p class="forgot" align="center"><a th:href="login">Already have Account?</a></p>
+    </form>
 </div>
 </body>
 </html>
