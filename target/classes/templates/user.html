@@ -3,6 +3,7 @@
 <head>
     <title>Note Book</title>
     <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/jquery-3.4.0.min.js"></script>
     <script src="/js/user.js"></script>
 </head>
 <body>
@@ -20,7 +21,7 @@
 
 </table>
 
-<form class="noteForm" id="noteForm" method="POST">
+<form class="noteForm" name="noteSendingForm">
     <label>
         <input class="inputField" type="text" id="label" name="label" align="center" placeholder="Label"/>
     </label>
@@ -29,6 +30,9 @@
     </label>
     <button class="submit" id="save-note" align="center">Save note</button>
 </form>
+
+
+<button class="delete" id="delete-all-notes" align="center">Delete all Notes</button>
 
 <form class="logoutForm" th:action="@{/logout}" method="GET">
     <button class="logout" align="center">Log out</button>

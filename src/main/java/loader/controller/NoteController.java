@@ -1,6 +1,7 @@
 package loader.controller;
 
 import loader.entitie.Note;
+import loader.exception.EmptyNoteException;
 import loader.exception.NoteNotFoundException;
 import loader.service.NoteService;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -29,28 +30,29 @@ public class NoteController {
         noteService.deleteAllNotes(getUsername());
     }
 
-/*    @DeleteMapping("/{userId}/notebook/note/{id}")
-    public void deleteNote(@PathVariable long userId, @PathVariable long id) throws NoteNotFoundException {
-        noteService.deleteNote(userId, id);
-    }*/
-
     @PostMapping
-    public String addNote(@RequestBody Note note){
+    public void addNote(@RequestBody Note note) throws EmptyNoteException {
         if(note.getUsername() == null){
             note.setUsername(getUsername());
         }
-        return noteService.addNote(note);
+        noteService.addNote(note);
     }
-
-    // TODO: How to get Notes' id
-/*    @PutMapping("/{userId}/notebook/note/{id}")
-    public void editNote(@PathVariable long userId, @PathVariable long id, String label, String noteString)
-            throws NoteNotFoundException {
-        noteService.editNote(userId, id, label, noteString);
-    }*/
 
     private String getUsername(){
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return ((UserDetails)principal).getUsername();
+    }
+
+    /*-------DOESN'T WORK ON SITE, WORKS WITH TALEND API TESTER------------*/
+
+    @DeleteMapping("/user/notebook/note/{id}")
+    public void deleteNote(@PathVariable long id) throws NoteNotFoundException {
+        noteService.deleteNote(getUsername(), id);
+    }
+
+    @PutMapping("/user/notebook/note/{id}")
+    public void editNote(@PathVariable long id, String label, String noteString)
+            throws NoteNotFoundException {
+        noteService.editNote(getUsername(), id, label, noteString);
     }
 }

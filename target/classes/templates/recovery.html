@@ -9,6 +9,9 @@
 <body>
 <div class="main">
     <p class="sign" align="center">Recover password</p>
+    <div align="center" th:if="${show}" th:text="${errorMessage}" class="alert alert-error">
+        Something went wrong.
+    </div>
     <form th:action="@{/recovery}" method="POST">
         <label>
             <input class="inputField" type="text" id="email" name="email" align="center" placeholder="Email"/>

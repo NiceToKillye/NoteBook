@@ -6,8 +6,8 @@ import java.util.Optional;
 
 public interface NoteRepository extends JpaRepository<Note, Long> {
 
-    //Optional<Note> findNoteByIdAndUserId(long id, long userId);
+    Optional<Note> findNoteByIdAndUsername(long id, String username);
     Iterable<Note> findAllByUsername(String username);
-    //boolean existsByIdAndUserId(long id, long userId);
+    boolean existsByIdAndUsername(long id, String username);
     void deleteAllByUsername(String username);
 }

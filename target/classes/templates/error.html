@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <link rel="stylesheet" th:href="@{/css/errorStyle.css}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+</head>
+<body class="main">
+    <div>
+        <h1 class="error" align="center" th:text="${errorCode}">Error Code</h1>
+        <h1 class="error" align="center" th:text="${errorMessage}">Error message</h1>
+        <p class="loginPage" align="center"><a th:href="user">Home</a></p>
+    </div>
+</body>
+</html>

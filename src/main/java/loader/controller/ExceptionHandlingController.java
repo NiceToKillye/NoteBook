@@ -1,6 +1,9 @@
 package loader.controller;
 
 import loader.exception.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -18,20 +21,52 @@ public class ExceptionHandlingController {
         String message = "Something went wrong";
 
         if(exception instanceof EmailWasTakenException){
-            message = "email was taken";
+            message = "Email was taken";
         }
         else if(exception instanceof LoginWasTakenException){
-            message = "login was taken";
+            message = "Login was taken";
         }
         else if(exception instanceof NullPointerException){
-            message = "all field must be filled";
+            message = "All field must be filled";
         }
         else if(exception instanceof WrongEmailException){
-            message = "wrong email";
+            message = "Wrong email";
         }
 
         model.addAttribute("show", true);
         model.addAttribute("errorMessage", message);
         return "registration";
+    }
+
+    @ExceptionHandler({
+            WrongRecoveryEmailException.class,
+            UsernameNotFoundException.class
+    })
+    public String recovery(Model model, Exception exception){
+        String message = "Something went wrong!";
+        if(exception instanceof WrongRecoveryEmailException){
+            message = "Wrong email!";
+        }
+        else if(exception instanceof UsernameNotFoundException){
+            message = "Username with this email was not found!";
+        }
+
+        model.addAttribute("show", true);
+        model.addAttribute("errorMessage", message);
+        return "recovery";
+    }
+
+    @ExceptionHandler({
+            EmptyNoteException.class
+    })
+    public ResponseEntity<String> emptyNote(Exception exception){
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(exception.getMessage());
+    }
+
+    @ExceptionHandler({
+            NoteNotFoundException.class
+    })
+    public ResponseEntity<String> deleteNote(Exception exception){
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(exception.getMessage());
     }
 }

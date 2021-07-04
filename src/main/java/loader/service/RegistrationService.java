@@ -55,5 +55,4 @@ public class RegistrationService {
         repository.save(user);
         return "User was registered";
     }
-
 }

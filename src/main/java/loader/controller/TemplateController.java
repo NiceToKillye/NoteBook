@@ -9,14 +9,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class TemplateController {
 
-    @GetMapping("recovery")
-    public String loadRecovery(){
-        return "recovery";
-    }
-
     @GetMapping("login")
     public String loadLogin(){
         return "login";
+    }
+
+    @GetMapping("recovery")
+    public String loadRecovery(Model model){
+        model.addAttribute("show", false);
+        return "recovery";
     }
 
     @GetMapping("registration")
