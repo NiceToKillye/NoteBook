@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class RegistrationController {
 
     private final RegistrationService registrationService;
-
     public RegistrationController(RegistrationService registrationService) {
         this.registrationService = registrationService;
     }

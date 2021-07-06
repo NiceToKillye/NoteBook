@@ -1,6 +1,5 @@
 package loader.controller;
 
-import loader.exception.WrongEmailException;
 import loader.exception.WrongRecoveryEmailException;
 import loader.service.RecoveryService;
 import org.springframework.stereotype.Controller;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class RecoveryController {
 
     private final RecoveryService service;
-
     public RecoveryController(RecoveryService service) {
         this.service = service;
     }
